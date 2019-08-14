@@ -42,7 +42,7 @@ namespace Nebukam.Beacon
                 for (int i = 0, count = beaconProcessors.Length; i < count; i++)
                 {
                     processor = beaconProcessors[i];
-                    if (!processor.enabled) { continue; }
+                    if (processor == null || !processor.enabled) { continue; }
                     processor.Process(ref position, ref velocity, ref lookAt);
                 }
             }

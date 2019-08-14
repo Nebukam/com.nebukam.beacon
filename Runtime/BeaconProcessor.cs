@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Nebukam.Signals;
 using Unity.Mathematics;
 using UnityEngine;
 using static Unity.Mathematics.math;
+using Nebukam.Signals;
+using Nebukam.Common;
 
 namespace Nebukam.Beacon
 {
