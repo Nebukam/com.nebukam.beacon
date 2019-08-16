@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Unity.Mathematics;
+﻿using Unity.Mathematics;
 using UnityEngine;
 using static Unity.Mathematics.math;
-using Nebukam.Utils;
-using Nebukam.Signals;
 
 namespace Nebukam.Beacon
 {
