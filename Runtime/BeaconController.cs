@@ -28,7 +28,7 @@ namespace Nebukam.Beacon
 
         [Header("LookAt")]
         [Tooltip("What does this gameobject looks at")]
-        public LookAt lookAt = LookAt.Heading;
+        public LookAt lookAt = LookAt.Direction;
         [ConditionalField("lookAt", LookAt.CustomTarget)]
         public Transform lookAtTarget = null;
 
@@ -120,7 +120,7 @@ namespace Nebukam.Beacon
 
                 if (lookAt == LookAt.Goal)
                     dir = normalize(goal - position);
-                else if(lookAt == LookAt.Heading)
+                else if(lookAt == LookAt.Direction)
                     dir = heading;
                 else if (lookAt == LookAt.CustomTarget && lookAtTarget != null)
                     dir = normalize((float3)lookAtTarget.position - position);

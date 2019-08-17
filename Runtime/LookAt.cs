@@ -3,7 +3,7 @@
     public enum LookAt
     {
         Nothing,
-        Heading,
+        Direction,
         Goal,
         CustomTarget
     }
