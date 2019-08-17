@@ -4,8 +4,8 @@ using Nebukam.JobAssist;
 
 namespace Nebukam.Beacon
 {
-    public abstract class BeaconModule<T> : SingletonBehaviour<T>
-        where T : Component, new()
+    public abstract class BeaconModule<T> : Singleton<T>
+        where T : class, new()
     {
 
         public delegate void OnProcessorComplete(IProcessor processor);
@@ -18,13 +18,14 @@ namespace Nebukam.Beacon
             
         }
 
-        protected override void Tick(float delta)
+        protected override void Update()
         {
+            float delta = Time.deltaTime;
             for (int i = 0, count = m_processes.Count; i < count; i++)
                 m_processes[i].Schedule(delta);
         }
 
-        protected override void LateTick(float delta)
+        protected override void LateUpdate()
         {
             IProcessor p;
             OnProcessorComplete callback;
@@ -35,7 +36,7 @@ namespace Nebukam.Beacon
                     callback(p);
             }
         }
-        
+
         protected override void Dispose(bool disposing)
         {
 
@@ -59,11 +60,6 @@ namespace Nebukam.Beacon
 
             m_processesCallbacks.Clear();
 
-        }
-
-        protected override void FixedTick()
-        {
-            
         }
 
     }
