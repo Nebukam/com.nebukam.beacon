@@ -2,13 +2,12 @@
     "name": "Nebukam.Beacon",
     "references": [
         "Unity.Burst",
-        "Unity.Mathematics",
         "Unity.Collections",
         "Unity.Jobs",
+        "Unity.Mathematics",
         "Nebukam.Common",
-        "Nebukam.Utils",
-        "Nebukam.JobAssist",
-		"Nebukam.Signals"
+        "Nebukam.Signals",
+        "Nebukam.JobAssist"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
