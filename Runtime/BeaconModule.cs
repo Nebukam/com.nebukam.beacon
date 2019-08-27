@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Nebukam.JobAssist;
+using System.Collections.Generic;
 using UnityEngine;
-using Nebukam.JobAssist;
 
 namespace Nebukam.Beacon
 {
@@ -15,7 +15,7 @@ namespace Nebukam.Beacon
 
         protected override void Init()
         {
-            
+
         }
 
         protected override void Update()
@@ -45,7 +45,7 @@ namespace Nebukam.Beacon
 
             IProcessor p;
             IProcessorGroup pGroup;
-            for(int i = 0, count = m_processes.Count; i < count; i++)
+            for (int i = 0, count = m_processes.Count; i < count; i++)
             {
                 p = m_processes[i];
                 pGroup = p as IProcessorGroup;

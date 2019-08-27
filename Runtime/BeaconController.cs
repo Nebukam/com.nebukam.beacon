@@ -60,7 +60,7 @@ namespace Nebukam.Beacon
         void Update()
         {
 
-            if(beaconIntentions == null) { return; }
+            if (beaconIntentions == null) { return; }
 
 #if UNITY_EDITOR
             if (updateOrder == 0)
@@ -69,7 +69,7 @@ namespace Nebukam.Beacon
             }
 #endif
 
-            if ((updateOrder & UpdateOrder.Before) != 0 )
+            if ((updateOrder & UpdateOrder.Before) != 0)
                 beaconIntentions.Tick();
 
             float3 position = transform.position, goal = beaconIntentions.goalLocation;
@@ -79,7 +79,7 @@ namespace Nebukam.Beacon
             float alteredSpeed = speed;
 
             //Check if we should sample dropoff pattern based on current distance to goal.
-            if(dropOffDistance > 0f && dropOffPattern != null)
+            if (dropOffDistance > 0f && dropOffPattern != null)
             {
                 float sqDropOff = lengthsq(dropOffDistance);
                 if (sqDistToGoal <= sqDropOff)
@@ -91,36 +91,36 @@ namespace Nebukam.Beacon
             float3 velocity = heading * alteredSpeed;
             IntentionState iState = beaconIntentions.currentState;
 
-            if(beaconProcessors != null)
+            if (beaconProcessors != null)
             {
                 BeaconProcessor processor;
                 for (int i = 0, count = beaconProcessors.Length; i < count; i++)
                 {
                     processor = beaconProcessors[i];
-                    if (processor == null 
-                        || !processor.enabled 
-                        || ( processor.allowedStates & iState ) == 0)
+                    if (processor == null
+                        || !processor.enabled
+                        || (processor.allowedStates & iState) == 0)
                     {
                         continue;
                     }
 
                     processor.Apply(
-                        ref position, 
-                        ref velocity, 
-                        ref heading, 
+                        ref position,
+                        ref velocity,
+                        ref heading,
                         sqDistToGoal);
                 }
             }
 
             transform.position = position;
 
-            if(lookAt != LookAt.Nothing)
+            if (lookAt != LookAt.Nothing)
             {
-                float3 dir = float3(false);
+                float3 dir = float3(0f);
 
                 if (lookAt == LookAt.Goal)
                     dir = normalize(goal - position);
-                else if(lookAt == LookAt.Direction)
+                else if (lookAt == LookAt.Direction)
                     dir = heading;
                 else if (lookAt == LookAt.CustomTarget && lookAtTarget != null)
                     dir = normalize((float3)lookAtTarget.position - position);

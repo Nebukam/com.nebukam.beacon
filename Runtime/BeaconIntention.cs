@@ -14,18 +14,18 @@ namespace Nebukam.Beacon
         /// 
 
 #if UNITY_EDITOR
-        public IntentionState state = 0;            
+        public IntentionState state = 0;
 #endif
 
-    [Header("Goal")]
+        [Header("Goal")]
         [Tooltip("Sets the intention's goal to be a Transform.\n" +
-            "Otherwise, set the goalLocation property through code")]
+                "Otherwise, set the goalLocation property through code")]
         public Transform goal = null;
         [Tooltip("Distance tolerance to determine whether the goal has been reached or not.")]
         public float goalReachTolerance = 0.1f;
 
         protected bool m_goalLocationDirty = false;
-        protected float3 m_goalLocation = float3(false);
+        protected float3 m_goalLocation = float3(0f);
         protected IntentionState m_currentState = IntentionState.IDLE;
         protected RSignal<float3> s_goalLocationChanged = new RSignal<float3>();
         protected Signal<IntentionState, IntentionState> s_stateChanged = new Signal<IntentionState, IntentionState>();
@@ -51,13 +51,13 @@ namespace Nebukam.Beacon
                 m_goalLocationDirty = true;
             }
         }
-        
+
         public IntentionState currentState
         {
             get { return m_currentState; }
             protected set
             {
-                if(m_currentState == value) { return; }
+                if (m_currentState == value) { return; }
                 IntentionState was = m_currentState;
                 m_currentState = value;
                 OnStateChanged(was);
@@ -85,11 +85,11 @@ namespace Nebukam.Beacon
 #endif
         }
 
-    protected virtual void OnGoalLocationChanged()
+        protected virtual void OnGoalLocationChanged()
         {
             s_goalLocationChanged.Dispatch(ref m_goalLocation);
         }
-        
+
         public virtual void Tick()
         {
 
@@ -114,7 +114,7 @@ namespace Nebukam.Beacon
         public virtual void CheckSituation()
         {
             float3 pos = transform.position;
-            if(distance(goalLocation, pos) <= goalReachTolerance)
+            if (distance(goalLocation, pos) <= goalReachTolerance)
             {
                 if (m_currentState == IntentionState.SEEK)
                 {

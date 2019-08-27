@@ -11,11 +11,11 @@ namespace Nebukam.Beacon
         {
 
         }
-        
+
         public override void Apply(
-            ref float3 position, 
-            ref float3 velocity, 
-            ref float3 heading, 
+            ref float3 position,
+            ref float3 velocity,
+            ref float3 heading,
             float sqDistToGoal)
         {
 

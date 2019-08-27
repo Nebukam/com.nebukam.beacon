@@ -31,11 +31,11 @@ namespace Nebukam.Beacon
         }
         */
 
-        public abstract void Apply( 
-            ref float3 position, 
-            ref float3 velocity, 
-            ref float3 lookAt, 
-            float sqDistToGoal );
+        public abstract void Apply(
+            ref float3 position,
+            ref float3 velocity,
+            ref float3 lookAt,
+            float sqDistToGoal);
 
     }
 }
