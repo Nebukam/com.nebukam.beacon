@@ -18,14 +18,13 @@ namespace Nebukam.Beacon
 
         }
 
-        protected override void Update()
+        protected override void Update(float delta)
         {
-            float delta = Time.deltaTime;
             for (int i = 0, count = m_processes.Count; i < count; i++)
                 m_processes[i].Schedule(delta);
         }
 
-        protected override void LateUpdate()
+        protected override void LateUpdate(float delta)
         {
             IProcessor p;
             OnProcessorComplete callback;
