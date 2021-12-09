@@ -1,6 +1,7 @@
 ﻿using Unity.Mathematics;
 using UnityEngine;
 using static Unity.Mathematics.math;
+using Nebukam.Common;
 
 namespace Nebukam.Beacon
 {
@@ -29,7 +30,9 @@ namespace Nebukam.Beacon
         [Header("LookAt")]
         [Tooltip("What does this gameobject looks at")]
         public LookAt lookAt = LookAt.Direction;
-        [ConditionalField("lookAt", LookAt.CustomTarget)]
+#if UNITY_EDITOR
+        [Nebukam.Common.Editor.ConditionalField("lookAt", LookAt.CustomTarget)]
+#endif
         public Transform lookAtTarget = null;
 
         [Header("Processors")]
